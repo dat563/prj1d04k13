@@ -8,10 +8,13 @@
     <title>Brands list</title>
 </head>
 <body>
+    <a href="index.php?controller=brand&action=create">Add a brand</a>
     <table border="1px" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th></th>
+            <th></th>
         </tr>
         <?php
             foreach ($brands as $brand){
@@ -22,6 +25,12 @@
                 </td>
                 <td>
                     <?= $brand['name'] ?>
+                </td>
+                <td>
+                    <a href="index.php?controller=brand&action=edit&id=<?= $brand['id'] ?>">Edit</a>
+                </td>
+                <td>
+                    <a href="index.php?controller=brand&action=destroy&id=<?= $brand['id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php
