@@ -8,6 +8,10 @@
     <title>Brands list</title>
 </head>
 <body>
+    <form method="post" action="index.php?controller=brand">
+        Search: <input type="text" name="search" value="<?= $array['search'] ?>">
+        <button>Search</button>
+    </form>
     <a href="index.php?controller=brand&action=create">Add a brand</a>
     <table border="1px" cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -17,7 +21,7 @@
             <th></th>
         </tr>
         <?php
-            foreach ($brands as $brand){
+            foreach ($array['infor'] as $brand){
         ?>
             <tr>
                 <td>
@@ -37,5 +41,18 @@
             }
         ?>
     </table>
+    <p>Trang: </p>
+    <?php
+        for($i = 1; $i <= $array['page']; $i++){
+    ?>
+        <form method="post" action="index.php?controller=brand&page=<?= $i ?>">
+            <input type="hidden" name="search" value="<?= $array['search'] ?>">
+            <input type="hidden" name="page" value="<?= $i ?>">
+            <button><?= $i ?></button>
+        </form>
+    <?php
+        }
+    ?>
+
 </body>
 </html>

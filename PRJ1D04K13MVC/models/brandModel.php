@@ -1,11 +1,32 @@
 <?php
     //function để lấy dữ liệu từ DB về
     function index(){
+        $search = '';
+        if(isset($_POST['search'])){
+            $search = $_POST['search'];
+        }
+        $page = 1;
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+        }
         include_once 'connect/openConnect.php';
-        $sql = "SELECT * FROM brand";
+        $sqlCount = "SELECT COUNT(*) AS count_record FROM brand WHERE name LIKE '%$search%'";
+        $counts = mysqli_query($connect, $sqlCount);
+        foreach ($counts as $each){
+            $countRecord = $each['count_record'];
+        }
+        $recordOnePage = 3;
+        $countPage = ceil($countRecord / $recordOnePage);
+        $start = ($page - 1) * $recordOnePage;
+        $end = 3;
+        $sql = "SELECT * FROM brand WHERE name LIKE '%$search%' LIMIT $start, $end";
         $brands = mysqli_query($connect, $sql);
         include_once 'connect/closeConnect.php';
-        return $brands;
+        $array = array();
+        $array['search'] = $search;
+        $array['infor'] = $brands;
+        $array['page'] = $countPage;
+        return $array;
     }
 
 //    Function lưu dữ liệu lên DB
@@ -46,7 +67,7 @@
     switch ($action){
         case '':
             //Lấy dữ liệu từ DB về
-            $brands = index();
+            $array = index();
             break;
         case 'store':
 //            Lưu dữ liệu lên DB
