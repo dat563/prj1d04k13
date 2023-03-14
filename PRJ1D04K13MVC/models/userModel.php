@@ -11,6 +11,7 @@
                 return 0;
             } elseif ($user['count_user'] == 1){
                 $_SESSION['email'] = $email;
+                $_SESSION['admin_id'] = $user['id'];
                 return 1;
             }
         }

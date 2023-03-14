@@ -17,6 +17,8 @@
             <th>Amount</th>
             <th>Brand</th>
             <th></th>
+            <th></th>
+            <th></th>
         </tr>
         <?php
             foreach ($products as $product){
@@ -41,12 +43,16 @@
                         <a href="index.php?controller=product&action=edit&id=<?= $product['id'] ?>">Edit</a>
                     </td>
                     <td>
-                        <a href="index.php?controller=product&action=destroy&id=<?= $product['id'] ?>">Edit</a>
+                        <a href="index.php?controller=product&action=destroy&id=<?= $product['id'] ?>">Delete</a>
+                    </td>
+                    <td>
+                        <a href="index.php?controller=product&action=add_cart&id=<?= $product['id'] ?>">Add to cart</a>
                     </td>
                 </tr>
         <?php
             }
         ?>
     </table>
+    <a href="index.php?controller=product&action=view_cart">View cart</a>
 </body>
 </html>

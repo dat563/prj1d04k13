@@ -37,5 +37,21 @@
             include_once 'models/productModel.php';
             header('Location:index.php?controller=product');
             break;
+        case 'view_cart':
+            include_once 'models/productModel.php';
+            include_once 'views/cart/index.php';
+            break;
+        case 'add_cart':
+            include_once 'models/productModel.php';
+            header('Location:index.php?controller=product&action=view_cart');
+            break;
+        case 'change_amount':
+            include_once 'models/productModel.php';
+            header('Location:index.php?controller=product&action=view_cart');
+            break;
+        case 'add_order_to_db':
+            include_once 'models/productModel.php';
+            header('Location:index.php?controller=product&action=view_cart');
+            break;
     }
 ?>
