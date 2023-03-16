@@ -14,6 +14,7 @@
             <th>Product's name</th>
             <th>Product's price</th>
             <th>Product's amount</th>
+            <th></th>
         </tr>
         <?php
             foreach ($infor['cart'] as $product_id => $value){
@@ -34,10 +35,18 @@
                         <button>Change amount</button>
                     </form>
                 </td>
+                <td>
+                    <a href="index.php?controller=product&action=delete_product_in_order&id=<?= $product_id; ?>">Delete</a>
+                </td>
             </tr>
         <?php
             }
         ?>
+        <tr>
+            <td colspan="5">
+                <a href="index.php?controller=product&action=delete_cart">Delete cart</a>
+            </td>
+        </tr>
     </table>
     <form method="post" action="index.php?controller=product&action=add_order_to_db">
         Customer: <select name="customer_id">

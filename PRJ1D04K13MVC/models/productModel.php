@@ -135,6 +135,15 @@
         unset($_SESSION['cart']);
     }
 
+    function delete_product_in_order(){
+        $product_id = $_GET['id'];
+        unset($_SESSION['cart'][$product_id]);
+    }
+
+    function delete_cart(){
+        unset($_SESSION['cart']);
+    }
+
 //    Kiểm tra hành động hiện tại
     switch ($action){
         case '':
@@ -169,6 +178,12 @@
             break;
         case 'add_order_to_db':
             add_order_to_db();
+            break;
+        case 'delete_product_in_order':
+            delete_product_in_order();
+            break;
+        case 'delete_cart':
+            delete_cart();
             break;
     }
 ?>

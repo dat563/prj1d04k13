@@ -53,5 +53,13 @@
             include_once 'models/productModel.php';
             header('Location:index.php?controller=product&action=view_cart');
             break;
+        case 'delete_product_in_order':
+            include_once 'models/productModel.php';
+            header('Location:index.php?controller=product&action=view_cart');
+            break;
+        case 'delete_cart':
+            include_once 'models/productModel.php';
+            header('Location:index.php?controller=product&action=view_cart');
+            break;
     }
 ?>
